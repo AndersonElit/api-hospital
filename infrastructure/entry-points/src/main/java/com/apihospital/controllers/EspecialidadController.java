@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/hospital")
+@RequestMapping("api/v1/especialidades")
 @AllArgsConstructor
 public class EspecialidadController {
 
     private final EspecialidadService especialidadService;
 
-    @PostMapping("/guardar-especialidades")
+    @PostMapping("/guardar-todo")
     public ResponseEntity<Response> gardarEspecialidades(@RequestBody List<Especialidad> especialidades) {
         Response response = Response.builder().build();
         try {

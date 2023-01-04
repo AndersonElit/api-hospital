@@ -15,18 +15,21 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "especialidad")
-public class EspecialidadEntity {
+@Table(name = "usuarios")
+public class UsuarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "especialidad")
-    private String especialidad;
+    @Column(name = "cedula")
+    private String cedula;
 
-    @OneToMany(mappedBy = "especialidad")
+    @Column(name = "nombre")
+    private String nombre;
+
+    @OneToMany(mappedBy = "usuario")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<CitaEntity> citas = new HashSet<>();
 
