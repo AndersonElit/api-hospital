@@ -23,7 +23,7 @@ public class UsuarioEntity {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "cedula")
+    @Column(name = "cedula", unique = true)
     private String cedula;
 
     @Column(name = "nombre")

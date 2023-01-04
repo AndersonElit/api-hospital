@@ -1,9 +1,12 @@
 package com.apihospital.config;
 
+import com.apihospital.adapters.CitaAdapter;
 import com.apihospital.adapters.EspecialidadAdapter;
 import com.apihospital.adapters.TipoUsuarioAdapter;
 import com.apihospital.adapters.UsuarioAdapter;
+import com.apihospital.cita.repository.CitaRepository;
 import com.apihospital.especialidad.repository.EspecialidadRepository;
+import com.apihospital.ports.CitaPort;
 import com.apihospital.ports.EspecialidadPort;
 import com.apihospital.ports.TipoUsuarioPort;
 import com.apihospital.ports.UsuarioPort;
@@ -28,6 +31,11 @@ public class appConfig {
     @Bean
     public UsuarioPort usuarioPort(UsuarioRepository usuarioRepository) {
         return new UsuarioAdapter(usuarioRepository);
+    }
+
+    @Bean
+    public CitaPort citaPort(CitaRepository citaRepository) {
+        return new CitaAdapter(citaRepository);
     }
 
 }
