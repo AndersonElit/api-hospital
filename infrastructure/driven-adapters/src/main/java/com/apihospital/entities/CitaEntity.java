@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -27,10 +30,6 @@ public class CitaEntity {
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private UsuarioEntity usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "id_tipo")
-    private TipoUsuarioEntity tipoUsuario;
 
     @ManyToOne
     @JoinColumn(name = "id_especialidad")

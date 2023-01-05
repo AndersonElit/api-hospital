@@ -1,6 +1,8 @@
 package com.apihospital.controllers;
 
 import com.apihospital.cita.requests.CitaRequest;
+import com.apihospital.cita.responses.CitaAgendadaResponse;
+import com.apihospital.cita.responses.CitaResponse;
 import com.apihospital.services.CitaService;
 import com.apihospital.utils.response.Response;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Objects;
 
 @RestController
 @RequestMapping("api/v1/citas")
@@ -22,9 +26,19 @@ public class CitaController {
     public ResponseEntity<Response> agendarCita(@RequestBody CitaRequest request) {
         Response response = Response.builder().build();
         try {
-            this.citaService.agendarCita(request);
-            response.setCodigo(HttpStatus.OK.toString());
-            return ResponseEntity.ok(response);
+            CitaResponse citaResponse = citaService.agendarCita(request);
+            if(Objects.nonNull(citaResponse.getId())) {
+                response.setResponse(CitaAgendadaResponse
+                        .builder()
+                        .id(citaResponse.getId())
+                        .fechaCita(citaResponse.getFechaCita())
+                        .build());
+                response.setMensaje(citaResponse.getMensaje());
+                return ResponseEntity.status(HttpStatus.OK).body(response);
+            } else {
+                response.setMensaje(citaResponse.getMensaje());
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

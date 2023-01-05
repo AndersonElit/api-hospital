@@ -1,5 +1,6 @@
 package com.apihospital.adapters;
 
+import com.apihospital.cita.model.Cita;
 import com.apihospital.cita.repository.CitaRepository;
 import com.apihospital.cita.requests.CitaRequest;
 import com.apihospital.dao.CitaDao;
@@ -15,8 +16,16 @@ public class CitaDbAdapter implements CitaRepository {
     private final CitaDao citaDao;
 
     @Override
-    public void agendarCita(CitaRequest request) {
-        this.citaDao.save(Mapper.map(request, CitaEntity.class));
+    public Cita agendarCita(CitaRequest request) {
+        return Mapper.map(
+                citaDao.save(Mapper.map(request, CitaEntity.class)),
+                Cita.class
+        );
+    }
+
+    @Override
+    public Boolean usuarioCitaExiste(String cedula) {
+        return citaDao.existsByUsuario_Cedula(cedula);
     }
 
 }

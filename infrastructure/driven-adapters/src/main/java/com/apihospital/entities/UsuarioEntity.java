@@ -29,6 +29,10 @@ public class UsuarioEntity {
     @Column(name = "nombre")
     private String nombre;
 
+    @ManyToOne
+    @JoinColumn(name = "id_tipo")
+    private TipoUsuarioEntity tipoUsuario;
+
     @OneToMany(mappedBy = "usuario")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<CitaEntity> citas = new HashSet<>();

@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CitaDao extends JpaRepository<CitaEntity, Integer> {
+
+    Boolean existsByUsuario_Cedula(String cedula);
+
 }

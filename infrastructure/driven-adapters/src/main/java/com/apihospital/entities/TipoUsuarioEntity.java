@@ -28,6 +28,7 @@ public class TipoUsuarioEntity {
 
     @OneToMany(mappedBy = "tipoUsuario")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private Set<CitaEntity> citas = new HashSet<>();
+    private Set<UsuarioEntity> usuarios = new HashSet<>();
+
 
 }
