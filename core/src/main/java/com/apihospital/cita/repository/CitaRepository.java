@@ -8,5 +8,6 @@ public interface CitaRepository {
     Cita agendarCita(CitaRequest request);
 
     Boolean usuarioCitaExiste(String cedula);
+    Cita consultarCita(Integer id);
 
 }

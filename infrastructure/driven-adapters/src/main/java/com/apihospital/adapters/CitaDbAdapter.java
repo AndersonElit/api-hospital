@@ -28,4 +28,11 @@ public class CitaDbAdapter implements CitaRepository {
         return citaDao.existsByUsuario_Cedula(cedula);
     }
 
+    @Override
+    public Cita consultarCita(Integer id) {
+        return Mapper.map(
+                citaDao.findById(id), Cita.class
+        );
+    }
+
 }

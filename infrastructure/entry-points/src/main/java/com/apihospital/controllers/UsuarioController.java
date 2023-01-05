@@ -23,10 +23,9 @@ public class UsuarioController {
         Response response = Response.builder().build();
         try {
             this.usuarioPort.registrarUsuario(request);
-            response.setCodigo(HttpStatus.OK.toString());
-            return ResponseEntity.ok(response);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
 
     }

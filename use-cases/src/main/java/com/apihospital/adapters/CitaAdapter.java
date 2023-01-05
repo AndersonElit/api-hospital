@@ -4,6 +4,7 @@ import com.apihospital.cita.model.Cita;
 import com.apihospital.cita.repository.CitaRepository;
 import com.apihospital.cita.requests.CitaRequest;
 import com.apihospital.cita.responses.CitaResponse;
+import com.apihospital.cita.responses.DetalleCitaResponse;
 import com.apihospital.ports.CitaPort;
 import lombok.AllArgsConstructor;
 import java.time.LocalDate;
@@ -51,6 +52,18 @@ public class CitaAdapter implements CitaPort {
             }
         }
 
+    }
+
+    @Override
+    public DetalleCitaResponse consultarCita(Integer id) {
+        Cita cita = citaRepository.consultarCita(id);
+        return DetalleCitaResponse.builder()
+                .id(cita.getId())
+                .especialidad(cita.getEspecialidad().getEspecialidad())
+                .identificacionUsuario(cita.getUsuario().getCedula())
+                .tipoUsuario(cita.getTipoUsuario().getTipo())
+                .fechaCita(cita.getFechaCita())
+                .build();
     }
 
 }
