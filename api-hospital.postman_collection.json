@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "5fb36b5c-f618-44f7-beed-be06b7720f72",
+		"name": "api-hospital",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "guardar especialidades",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"especialidad\": \"Medico general\"\n    },\n    {\n        \"especialidad\": \"Cardiologo\"\n    },\n    {\n        \"especialidad\": \"Odontologo\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/especialidades/guardar-todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"especialidades",
+						"guardar-todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "guardar tipos usuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"tipo\": \"EPS\"\n    },\n    {\n        \"tipo\": \"POLIZA\"\n    },\n    {\n        \"tipo\": \"PARTICULAR\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/tipos-usuario/guardar-todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"tipos-usuario",
+						"guardar-todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTRAR USUARIO",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cedula\": \"5234567\",\n    \"nombre\": \"CAMILO GIRALDO\",\n    \"tipoUsuario\": {\n        \"id\": 2,\n        \"tipo\": \"POLIZA\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/usuarios/registrar-usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"registrar-usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agendar cita",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"usuario\": {\n        \"id\": 1,\n        \"cedula\": \"5234567\",\n        \"nombre\": \"CAMILO GIRALDO\",\n        \"tipoUsuario\": {\n            \"id\": 2,\n            \"tipo\": \"POLIZA\"\n        }\n    },\n    \"especialidad\": {\n        \"id\": 1,\n        \"especialidad\": \"Medico general\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/citas/agendar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"citas",
+						"agendar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar cita",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/citas/agendar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"citas",
+						"agendar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
